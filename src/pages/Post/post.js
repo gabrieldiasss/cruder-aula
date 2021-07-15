@@ -1,6 +1,7 @@
 import React from 'react'
+import axios from 'axios'
 
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import Header from '../../components/Header/Header'
 
@@ -18,11 +19,20 @@ const validationPost = yup.object().shape({
 
 function Post() {
 
+    let history = useHistory()
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validationPost)
     })
 
-    const addPost = data => console.log(data)
+    const addPost = data => axios.post("https://upload-my-api.herokuapp.com/post/create", data)
+    .then(() => {
+        console.log("Deu tudo certo")
+        history.push("/")
+    })
+    .catch(() => {
+        console.log("DEU ERRADO")
+    })
 
     return(
         <div>
