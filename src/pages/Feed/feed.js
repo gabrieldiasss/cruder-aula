@@ -51,7 +51,7 @@ function Feed() {
                                 <div className="btns" >
 
                                     <div className="btn-edit" >
-                                        <Link to="/edit" >
+                                        <Link to={{ pathname: `/edit/${post._id}` }} >
                                             <button>Edit</button>
                                         </Link>
                                     </div>
@@ -73,7 +73,6 @@ function Feed() {
                     })}
 
                     
-
                 </div>
 
             </main>

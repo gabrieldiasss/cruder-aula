@@ -8,12 +8,13 @@ import Lermais from './pages/LerMais/lermais'
 import Feed from './pages/Feed/feed'
 
 function App() {
+	
 	return(
 		<Router>
 			<Switch>
 				<Route exact path="/" component={Feed} />
 				<Route path="/post" component={Post} />
-				<Route path="/edit" component={Edit} />
+				<Route path="/edit/:id" component={Edit} />
 				<Route path="/lermais" component={Lermais} />
 			</Switch>
 		</Router>
