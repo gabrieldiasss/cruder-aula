@@ -15,7 +15,7 @@ function App() {
 				<Route exact path="/" component={Feed} />
 				<Route path="/post" component={Post} />
 				<Route path="/edit/:id" component={Edit} />
-				<Route path="/lermais" component={Lermais} />
+				<Route path="/lermais/:id" component={Lermais} />
 			</Switch>
 		</Router>
 	)

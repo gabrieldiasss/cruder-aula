@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
+import { useParams } from 'react-router-dom'
 
 import Header from '../../components/Header/Header'
 
 function LerMais() {
+
+    const [ lermais, setLermais ] = useState({})
+
+    const { id } = useParams()
+
+    useEffect(() => {
+        axios.get(`https://upload-my-api.herokuapp.com/post/${id}`)
+        .then((response) => {
+            setLermais(response.data)
+        })
+
+    }, [])
     
     return(
         <div>
@@ -15,15 +30,12 @@ function LerMais() {
                     <div className="card" >
 
                         <header>
-                            <h2>Curso consumindo api</h2>
+                            <h2>{lermais.title}</h2>
                         </header>
 
                         <div className="line"></div>
 
-                        <p>Nesse curso eu ensino vcs a consumirem uma api, com react.js, uma api feita em node js e mongoDB,
-                        Nesse curso eu ensino vcs a consumirem uma api, com react.js, uma api feita em node js e mongoDB,
-                        Nesse curso eu ensino vcs a consumirem uma api, com react.js, uma api feita em node js e mongoDB,
-                        Nesse curso eu ensino vcs a consumirem uma api, com react.js, uma api feita em node js e mongoDB,
+                        <p>{lermais.content}
                         </p>
 
                     </div>
