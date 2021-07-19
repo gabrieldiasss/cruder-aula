@@ -24,7 +24,17 @@ function Feed() {
 
     }, [])
 
+    function deletePost(id) {
+
+        axios.delete(`https://upload-my-api.herokuapp.com/post/delete/${id}`)
+
+        setPosts(posts.filter(post => post._id !== id ))
+
+    }
+
+
     return(
+
         <div>
 
             <HeaderMain />
@@ -63,7 +73,7 @@ function Feed() {
                                     </div>
 
                                     <div className="btn-delete" >
-                                        <button>delete</button>
+                                        <button onClick={() => deletePost(post._id) } >delete</button>
                                     </div>
 
                                 </div>
